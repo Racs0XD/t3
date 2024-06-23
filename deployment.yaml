@@ -1,0 +1,19 @@
+apiVersion: apps/v1           # Version de la API de Kubernetes y tipo de objeto (Deployment)
+kind: Deployment              # Tipo de recurso: Despliegue (Deployment)
+metadata:
+  name: hola-mundo-deployment # Nombre del despliegue
+spec:
+  replicas: 1                 # Numero de replicas de Pods que se crearan
+  selector:
+    matchLabels:
+      app: hola-mundo         # Selector para los Pods controlados por este despliegue
+  template:
+    metadata:
+      labels:
+        app: hola-mundo       # Etiqueta que se aplica a los Pods creados por este despliegue
+    spec:
+      containers:
+      - name: hola-mundo      # Nombre del contenedor
+        image: racs0/t3:1.0   # Imagen del contenedor a utilizar
+        ports:
+        - containerPort: 3000  # Puerto expuesto por el contenedor
